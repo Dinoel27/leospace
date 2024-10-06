@@ -1,0 +1,463 @@
+/* Make the canvas overlay the entire screen */
+#three-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow interactions with page content */
+    z-index: 100; /* Keep it behind the HTML content */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    overflow-y: auto; /* Enable scrolling */
+
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Navigation styles */
+nav {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hamburger menu styles */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Media (Image or Video) Styles */
+.media {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    /* Optional: Adds rounded corners */
+}
+
+/* Hero Section Styles */
+.hero {
+    text-align: center;
+    padding: 100px 10px;
+    background-color: #f4f4f4;
+    position: relative; /* Ensure the content is above the canvas */
+
+}
+
+.hero h1 {
+    font-size: 5.5rem;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to right, #8a8a8a, #c0c0c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    word-spacing: 0.1em;
+    /* Control space between words */
+    line-height: 1.1;
+    /* Control space between lines */
+}
+
+.hero-subtext {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-buttons .button {
+    padding: 10px 20px;
+    /* background-color: #007BFF; */
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.hero-buttons .button i {
+    margin-right: 8px;
+}
+
+.hero-buttons .button:hover {
+    /* background-color: #0056b3; */
+    text-decoration: underline;
+}
+
+
+/* Skills Overview */
+.skills-overview {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+/* Social Buttons */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+/* General Project Block Styles */
+.project-block {
+    margin-bottom: 40px;
+}
+
+.media-container {
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.text-content h1,
+.text-content h2 {
+    margin: 10px 0;
+}
+
+.text-content p {
+    margin-bottom: 20px;
+}
+
+.read-more-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Resume Content Styling */
+.resume-content {
+    margin-top: 40px;
+    text-align: left;
+    font-family: 'Georgia', serif;
+    /* Serif typeface for resume */
+    line-height: 1.3;
+
+    margin-left: 50px;
+}
+
+/* Resume Item Header (Company, Position, Date) */
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.resume-pubs {
+    display: flex;
+    justify-content: space-between;
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.company-name {
+    flex: 1;
+    text-align: left;
+}
+
+.position {
+    flex: 1;
+    text-align: center;
+}
+
+.date {
+    flex: 1;
+    text-align: right;
+    margin-right: 40px;
+}
+
+.date-pubs {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+/* Bullet Points */
+ul {
+    margin-top: 0;
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Section Headers */
+h3 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* Smaller headers */
+h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.download-btn:hover {
+    background-color: #218838;
+}
+
+/* Footer Section */
+footer {
+    background-color: #f4f4f4;
+    color: black;
+    padding: 30px 0;
+    width: 100%;
+    height: 40vh;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    max-width: 1200px; /* Keeps the content width manageable */
+    margin: 0 auto; /* Center the content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    color: black;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #007BFF; /* Optional hover color */
+}
+
+.footer-nav a {
+    margin: 0 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: black;
+}
+
+.back-to-top a {
+    color: black;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-to-top a:hover {
+    text-decoration: underline;
+}
+
+
+
+@media (max-width: 768px) {
+
+    /* Hide menu by default on small screens */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 20px;
+        top: 60px;
+        background-color: white;
+        border: 1px solid #ccc;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        padding: 10px;
+        display: block;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    nav ul.show-menu {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        /* Reduce font size */
+        line-height: 1.1;
+        /* Decrease space between lines */
+    }
+
+}
+
+/* Media container for image or video */
+.media-container {
+    margin-bottom: 30px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Text Content */
+.text-content h1 {
+    margin-bottom: 10px;
+    color: #333;
+    position: relative; /* Ensure the content is above the canvas */
+
+}
+
+.text-content h2 {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.text-content p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#read-more-btn {
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#read-more-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Button to Redirect to Project */
+.project-button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.project-button:hover {
+    background-color: #218838;
+}
+
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+        /* Further reduce font size */
+        line-height: 1;
+        /* Tighten line spacing */
+    }
+}
